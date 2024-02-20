@@ -12,3 +12,4 @@ source funcs/init_check.sh
 
 source funcs/launch_instance.sh
 
+source funcs/install_packages.sh
