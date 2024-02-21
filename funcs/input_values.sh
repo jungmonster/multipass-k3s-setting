@@ -18,7 +18,9 @@ input_ssh_pubkey() {
         echo "ssh pub key exist"
     else
         echo "ssh pub key not exist"
-        echo "Create an ssh key"
+        echo "******************************************"
+        echo "**            Create an ssh key         **"
+        echo "******************************************"
         echo "run `ssh-keygen -C ubuntu -f $ssh_pubkey`"
     fi
 }
@@ -31,6 +33,9 @@ input_ssh_cloud_init_file() {
         echo "cloud_init_file exist"
     else
         echo "$cloud_init_file not exist"
+        echo "******************************************"
+        echo "**        Create a cloud init file      **"
+        echo "******************************************"
         pub_key_str=$(cat "$ssh_pubkey".pub)
         echo "Create $cloud_init_file"
         export pub_key_str=$pub_key_str

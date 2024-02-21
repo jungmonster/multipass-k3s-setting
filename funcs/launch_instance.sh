@@ -29,9 +29,17 @@ update_ssh_config() {
     echo "master node ipv4: $master_ipv4"
 
     if grep -q "^Host $master_node$" "$config_file"; then
+        echo "******************************************"
+        echo "Host $master_node exists in $config_file. Updating..."
+        echo "******************************************"
+
         sed -i '' "/^Host $master_node$/,/^$/ s/^ *HostName .*$/HostName $master_ipv4/" $config_file
     else
         # 호스트가 존재하지 않는 경우 정보 추가
+        echo "******************************************"
+        echo "Host $master_node does not exist in $config_file. Adding..."
+        echo "******************************************"
+        
         echo "Host $master_node does not exist in $config_file. Adding..."
         echo -e "\nHost $master_node" >> "$config_file"
         echo "  HostName $master_ipv4" >> "$config_file"

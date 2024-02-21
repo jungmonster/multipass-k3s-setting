@@ -1,3 +1,5 @@
+#!/bin/bash
+
 install_helm () {
     master_node="$default_name_prefix-master"
 

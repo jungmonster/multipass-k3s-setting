@@ -1,3 +1,5 @@
 kube_ctl/*
 cloud-init.yaml
 multipass-ssh-key*
+kube_study
+kube_study/*
