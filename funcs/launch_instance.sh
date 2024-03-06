@@ -16,8 +16,9 @@ launch_worker_node() {
 }
 
 create_master_instance() {
+    current_dir=$(pwd)
     master_node="$default_name_prefix-master"
-    multipass launch -n $master_node -c 2 -m 2G -d 20G --cloud-init ~/$cloud_init_file jammy
+    multipass launch -n $master_node -c 2 -m 2G -d 20G --cloud-init $current_dir/$cloud_init_file jammy
 }
 
 update_ssh_config() {
@@ -39,12 +40,13 @@ update_ssh_config() {
         echo "******************************************"
         echo "Host $master_node does not exist in $config_file. Adding..."
         echo "******************************************"
-        
-        echo "Host $master_node does not exist in $config_file. Adding..."
+        current_dir=$(pwd)
+
         echo -e "\nHost $master_node" >> "$config_file"
         echo "  HostName $master_ipv4" >> "$config_file"
-        echo "  User username" >> "$config_file"
+        echo "  User ubuntu" >> "config_file"
         echo "  Port 22" >> "$config_file"
+        echo "  IdentityFile $current_dir/$default_ssh_pubkey" >> "$config_file"
         # 원하는 설정 추가할 수 있음vimg_file."
     fi
 }

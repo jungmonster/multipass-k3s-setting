@@ -26,7 +26,7 @@ input_ssh_pubkey() {
 }
 
 input_ssh_cloud_init_file() {
-    read -p "Enter a ssh pubkey name(default $default_cloud_init_file): " cloud_init_file
+    read -p "Enter a cloud init file name(default $default_cloud_init_file): " cloud_init_file
     cloud_init_file="${cloud_init_file:-$default_cloud_init_file}"
 
     if [ -f "$cloud_init_file" ]; then
